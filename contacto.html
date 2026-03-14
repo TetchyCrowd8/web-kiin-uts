@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta a Kiin Uts — Agenda una cita, llámanos o escríbenos. Estamos listos para diseñar tu programa deportivo o recreativo.">
+  <title>Contacto · Kiin Uts Sport &amp; Recreation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📞</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .social-contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px;
+    }
+    .social-contact-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 18px 12px; background: var(--white); border-radius: var(--r);
+      border: 1.5px solid var(--border); font-weight: 700; font-size: .85rem;
+      color: var(--text); transition: all .2s; text-align: center;
+    }
+    .social-contact-btn:hover {
+      border-color: var(--green); color: var(--green);
+      transform: translateY(-2px); box-shadow: var(--shadow);
+    }
+    .social-contact-btn .s-icon { font-size: 1.6rem; }
+    @media (max-width: 560px) { .social-contact-grid { grid-template-columns: repeat(3, 1fr); } }
+  </style>
+</head>
+<body>
+
+<div id="nav-ph"></div>
+<script src="js/shared.js"></script>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<div class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1400&q=80')">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a> › <span>Contacto</span>
+    </div>
+    <div class="hero-tag">📞 Hablemos</div>
+    <h1>Construyamos una relación sólida</h1>
+    <p>Cuéntanos tu proyecto. Estamos listos para diseñar el programa deportivo o recreativo ideal para tu institución.</p>
+  </div>
+</div>
+
+<!-- ══ CONTACTO + FORMULARIO ═════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div class="fade-in-l">
+        <div class="tag" style="margin-bottom:20px">Información de contacto</div>
+        <h2 style="margin-bottom:24px">¿Cómo <span class="accent-green">comunicarte</span> con nosotros?</h2>
+
+        <div class="contact-info-list">
+          <div class="ci">
+            <div class="ci-icon">📞</div>
+            <div class="ci-text">
+              <h4>Teléfono</h4>
+              <p><a href="tel:5514733567">55 1473 3567</a></p>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">📧</div>
+            <div class="ci-text">
+              <h4>Correo Electrónico</h4>
+              <p><a href="mailto:m.fernandez@kiinuts.com">m.fernandez@kiinuts.com</a></p>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">💬</div>
+            <div class="ci-text">
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/5514733567" target="_blank" rel="noopener">Escríbenos directamente →</a></p>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <h4>Ubicación</h4>
+              <p>Ciudad de México, México</p>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">🕑</div>
+            <div class="ci-text">
+              <h4>Horario de atención</h4>
+              <p>Lunes a Viernes · 9:00 – 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-bottom:12px;font-size:.88rem;color:var(--text-m)">Síguenos en redes sociales</h4>
+        <div class="social-contact-grid">
+          <a href="https://instagram.com/kiinuts" target="_blank" rel="noopener" class="social-contact-btn">
+            <span class="s-icon">📸</span> Instagram
+          </a>
+          <a href="https://facebook.com/kiinuts" target="_blank" rel="noopener" class="social-contact-btn">
+            <span class="s-icon">📘</span> Facebook
+          </a>
+          <a href="https://youtube.com/@kiinuts" target="_blank" rel="noopener" class="social-contact-btn">
+            <span class="s-icon">▶️</span> YouTube
+          </a>
+        </div>
+
+        <a href="https://wa.me/5514733567" target="_blank" rel="noopener"
+           class="btn btn-primary btn-full" style="margin-top:20px;background:#25D366">
+          💬 Escribir por WhatsApp
+        </a>
+      </div>
+
+      <!-- Formulario -->
+      <div class="contact-form fade-in-r">
+        <h3>Envíanos un mensaje</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Nombre completo *</label>
+              <input type="text" id="fname" name="name" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="femail">Correo electrónico *</label>
+              <input type="email" id="femail" name="email" required placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fphone">Teléfono</label>
+              <input type="tel" id="fphone" name="phone" placeholder="55 1234 5678">
+            </div>
+            <div class="form-group">
+              <label for="finst">Institución / Empresa</label>
+              <input type="text" id="finst" name="institution" placeholder="Nombre de tu institución">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fservice">Servicio de interés *</label>
+            <select id="fservice" name="service" required>
+              <option value="">Selecciona un servicio…</option>
+              <option value="deportes">Deportes (ligas y torneos)</option>
+              <option value="recreacion">Recreación y eventos</option>
+              <option value="ponte-en-forma">Ponte en Forma</option>
+              <option value="capacitacion">Capacitación docente</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Mensaje *</label>
+            <textarea id="fmsg" name="message" required rows="4" placeholder="Cuéntanos sobre tu proyecto. ¿Cuántos alumnos/colaboradores? ¿Qué tipo de evento? ¿Cuándo?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">📩 Enviar Mensaje</button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CALENDLY ════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="tag">Agenda una cita</div>
+      <h2>Selecciona el día y hora que <span class="accent-green">mejor te convenga</span></h2>
+      <p>Reserva una reunión de 30 minutos con nuestro equipo sin costo y sin compromiso.</p>
+    </div>
+    <div class="calendly-wrap fade-in">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/pikipau835/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=7bc144"
+           style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
+</section>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container text-center fade-in">
+    <h2 style="color:#fff;margin-bottom:14px">¿Prefieres que te llamemos?</h2>
+    <p style="color:rgba(255,255,255,.7);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto">Déjanos tu número en el formulario y te contactamos en menos de 24 horas hábiles.</p>
+    <div class="gap-flex" style="justify-content:center">
+      <a href="tel:5514733567" class="btn btn-primary">📞 55 1473 3567</a>
+      <a href="https://wa.me/5514733567" target="_blank" rel="noopener" class="btn btn-outline-white">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-ph"></div>
+
+<script>
+  /* Contact form — Formspree or mailto fallback */
+  (function () {
+    const form   = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const FORM_ID = 'TU_FORMSPREE_ID'; // ← Reemplaza con tu ID de Formspree
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn  = document.getElementById('submitBtn');
+      const orig = btn.textContent;
+      btn.textContent = '⏳ Enviando…'; btn.disabled = true;
+      status.className = 'form-status'; status.textContent = '';
+
+      const fd = new FormData(form);
+
+      if (FORM_ID === 'TU_FORMSPREE_ID') {
+        /* Fallback mailto */
+        const sub  = encodeURIComponent('Contacto Kiin Uts: ' + (fd.get('service') || ''));
+        const body = encodeURIComponent(
+          `Nombre: ${fd.get('name')}\nCorreo: ${fd.get('email')}\nTeléfono: ${fd.get('phone') || '—'}\nInstitución: ${fd.get('institution') || '—'}\nServicio: ${fd.get('service')}\n\n${fd.get('message')}`
+        );
+        window.location.href = `mailto:m.fernandez@kiinuts.com?subject=${sub}&body=${body}`;
+        btn.textContent = orig; btn.disabled = false;
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+          method: 'POST', body: fd, headers: { Accept: 'application/json' }
+        });
+        if (res.ok) {
+          status.className = 'form-status ok';
+          status.textContent = '✅ ¡Mensaje enviado! Te contactamos en menos de 24 horas.';
+          form.reset();
+        } else { throw new Error(); }
+      } catch {
+        status.className = 'form-status err';
+        status.textContent = '❌ Error al enviar. Escríbenos a m.fernandez@kiinuts.com';
+      } finally { btn.textContent = orig; btn.disabled = false; }
+    });
+  })();
+</script>
+</body>
+</html>

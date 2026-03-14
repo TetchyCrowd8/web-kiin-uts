@@ -3,1094 +3,270 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kiin Uts — Organización deportiva y recreativa de México. Ligas, torneos y eventos desde 2011.">
-  <meta name="theme-color" content="#06100a">
-  <title>Kiin Uts · Deporte &amp; Recreación</title>
+  <meta name="description" content="Kiin Uts — Organización de Eventos Deportivos y Recreativos en México. Aumenta la productividad de tus colaboradores o alumnos con deporte y recreación.">
+  <title>Kiin Uts · Sport &amp; Recreation</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
-  <style>
-    /* ── Variables ──────────────────────────────────── */
-    :root {
-      --bg:           #06100a;
-      --bg-card:      #0c1a12;
-      --bg-alt:       #080e0a;
-      --border:       rgba(163,230,53,.12);
-      --border-h:     rgba(163,230,53,.38);
-      --green:        #22c55e;
-      --lime:         #a3e635;
-      --lime-d:       #84cc16;
-      --red:          #ef4444;
-      --yellow:       #eab308;
-      --text:         #f0fdf4;
-      --text-m:       #a7f3d0;
-      --text-s:       #6ee7b7;
-      --shadow:       0 4px 24px rgba(0,0,0,.5);
-      --r:            12px;
-      --nav:          68px;
-    }
-    /* ── Reset ──────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: system-ui,-apple-system,'Segoe UI',sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--lime-d); border-radius: 3px; }
-
-    /* ── Container ──────────────────────────────────── */
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-
-    /* ── Navigation ─────────────────────────────────── */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; height: var(--nav);
-      background: rgba(6,16,10,.88); backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border); z-index: 1000;
-    }
-    .nav-wrap {
-      max-width: 1180px; margin: 0 auto; padding: 0 24px;
-      height: 100%; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none; color: var(--text);
-      font-size: 1.45rem; font-weight: 900; letter-spacing: -0.5px;
-    }
-    .nav-brand strong { color: var(--lime); }
-    .nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
-    .nav-links a {
-      color: var(--text-m); text-decoration: none;
-      padding: 8px 14px; border-radius: 8px; font-size: .9rem; transition: all .2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--lime); background: rgba(163,230,53,.09); }
-    .nav-admin {
-      background: rgba(163,230,53,.12) !important;
-      color: var(--lime) !important;
-      border: 1px solid var(--border-h) !important;
-    }
-    .nav-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 8px;
-    }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
-
-    /* ── Hero ───────────────────────────────────────── */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      position: relative; overflow: hidden; padding-top: var(--nav);
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 15% 55%, rgba(34,197,94,.13) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 20%, rgba(163,230,53,.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 55% 85%, rgba(34,197,94,.06) 0%, transparent 40%);
-    }
-    .hero-bg::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(
-        0deg, transparent, transparent 39px,
-        rgba(163,230,53,.035) 39px, rgba(163,230,53,.035) 40px
-      );
-    }
-    .hero-content {
-      position: relative; z-index: 1;
-      text-align: center; padding: 60px 24px 140px;
-    }
-    .hero-badge {
-      display: inline-block; padding: 6px 18px;
-      background: rgba(163,230,53,.1); border: 1px solid rgba(163,230,53,.28);
-      border-radius: 100px; color: var(--lime); font-size: .82rem;
-      font-weight: 700; margin-bottom: 24px; letter-spacing: .6px;
-    }
-    .hero h1 {
-      font-size: clamp(3.8rem, 11vw, 7.5rem); font-weight: 900;
-      letter-spacing: -3px; line-height: 1; margin-bottom: 18px;
-    }
-    .hero h1 .accent { color: var(--lime); }
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-m);
-      max-width: 480px; margin: 0 auto 40px;
-    }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Buttons ────────────────────────────────────── */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; border-radius: 10px;
-      font-weight: 700; font-size: .95rem; text-decoration: none;
-      transition: all .2s; cursor: pointer; border: none; font-family: inherit;
-    }
-    .btn-primary { background: var(--lime); color: #04090a; }
-    .btn-primary:hover {
-      background: var(--lime-d); transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(163,230,53,.3);
-    }
-    .btn-outline { background: transparent; color: var(--lime); border: 1.5px solid rgba(163,230,53,.38); }
-    .btn-outline:hover { background: rgba(163,230,53,.09); border-color: var(--lime); transform: translateY(-2px); }
-    .btn-full { width: 100%; justify-content: center; }
-
-    /* ── Stats bar ──────────────────────────────────── */
-    .stats-bar {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(12,26,18,.92); backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      padding: 22px 32px; gap: 12px;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      display: block; font-size: 2rem; font-weight: 900; color: var(--lime); line-height: 1;
-    }
-    .stat-num::after { content: '+'; }
-    .stat-label {
-      display: block; font-size: .75rem; color: var(--text-m);
-      margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;
-    }
-
-    /* ── Sections ───────────────────────────────────── */
-    .section { padding: 80px 0; }
-    .section-alt { background: var(--bg-alt); }
-    .section-header { text-align: center; margin-bottom: 48px; }
-    .section-header h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900;
-      letter-spacing: -1px; margin-bottom: 10px;
-    }
-    .accent { color: var(--lime); }
-    .section-header p { color: var(--text-m); font-size: 1rem; max-width: 480px; margin: 0 auto; }
-
-    /* ── League tabs ────────────────────────────────── */
-    .league-tabs {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      margin-bottom: 28px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
-    }
-    .tab-btn {
-      padding: 7px 18px; border-radius: 8px; font-size: .88rem; font-weight: 700;
-      background: rgba(163,230,53,.05); border: 1px solid var(--border);
-      color: var(--text-m); cursor: pointer; transition: all .2s; font-family: inherit;
-    }
-    .tab-btn:hover { border-color: var(--border-h); color: var(--lime); }
-    .tab-btn.active {
-      background: rgba(163,230,53,.14); border-color: rgba(163,230,53,.5); color: var(--lime);
-    }
-
-    /* ── Match cards ────────────────────────────────── */
-    .matches-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;
-    }
-    .match-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 18px;
-      transition: all .2s; animation: fadeUp .3s ease;
-    }
-    .match-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: var(--shadow); }
-    .match-meta {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 16px; font-size: .78rem;
-    }
-    .match-date { color: var(--text-s); }
-    .match-status {
-      padding: 3px 10px; border-radius: 100px; font-weight: 700;
-      font-size: .72rem; text-transform: uppercase; letter-spacing: .5px;
-    }
-    .s-done     { background: rgba(34,197,94,.14);  color: var(--green);  }
-    .s-prog     { background: rgba(234,179,8,.14);  color: var(--yellow); }
-    .s-live     { background: rgba(239,68,68,.14);  color: var(--red);    }
-    .match-teams {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; gap: 10px; margin-bottom: 12px;
-    }
-    .team-name { font-weight: 800; font-size: .92rem; line-height: 1.3; }
-    .team-home { text-align: right; }
-    .team-away { text-align: left; }
-    .match-score {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 1.55rem; font-weight: 900; color: var(--lime); white-space: nowrap;
-    }
-    .score-sep { color: var(--text-s); font-size: 1.1rem; font-weight: 400; }
-    .match-league {
-      text-align: center; font-size: .76rem; color: var(--text-s);
-      border-top: 1px solid var(--border); padding-top: 10px;
-    }
-
-    /* ── Standings table ────────────────────────────── */
-    .table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
-    .standings-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
-    .standings-table th {
-      background: rgba(163,230,53,.07); color: var(--lime);
-      padding: 13px 14px; text-align: center; font-weight: 800;
-      font-size: .76rem; text-transform: uppercase; letter-spacing: .5px;
-      border-bottom: 1px solid var(--border); white-space: nowrap;
-    }
-    .standings-table th:nth-child(2) { text-align: left; }
-    .standings-table td {
-      padding: 11px 14px; text-align: center;
-      border-bottom: 1px solid rgba(163,230,53,.05); transition: background .15s;
-    }
-    .standings-table td:nth-child(2) { text-align: left; font-weight: 700; }
-    .standings-table tr:hover td { background: rgba(163,230,53,.04); }
-    .standings-table tr:last-child td { border-bottom: none; }
-    .pos-1 td:first-child { color: #ffd700; font-weight: 900; }
-    .pos-2 td:first-child { color: #c0c0c0; font-weight: 900; }
-    .pos-3 td:first-child { color: #cd7f32; font-weight: 900; }
-    .pts-cell { color: var(--lime); font-weight: 900; font-size: .98rem; }
-
-    /* ── Gallery ────────────────────────────────────── */
-    .gallery-filter {
-      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; justify-content: center;
-    }
-    .filter-btn {
-      padding: 7px 20px; border-radius: 100px; font-size: .88rem; font-weight: 700;
-      background: transparent; border: 1.5px solid var(--border);
-      color: var(--text-m); cursor: pointer; transition: all .2s; font-family: inherit;
-    }
-    .filter-btn:hover { border-color: var(--border-h); color: var(--lime); }
-    .filter-btn.active { background: var(--lime); border-color: var(--lime); color: #04090a; }
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px;
-    }
-    .gal-item {
-      position: relative; border-radius: var(--r); overflow: hidden;
-      cursor: pointer; aspect-ratio: 4/3;
-      border: 1px solid var(--border); transition: all .3s; animation: fadeUp .4s ease;
-    }
-    .gal-item:hover { transform: scale(1.02); border-color: var(--border-h); box-shadow: 0 8px 32px rgba(0,0,0,.6); }
-    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
-    .gal-item:hover img { transform: scale(1.08); }
-    .gal-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(6,16,10,.9) 0%, transparent 55%);
-      opacity: 0; transition: opacity .3s;
-      display: flex; align-items: flex-end; padding: 14px;
-    }
-    .gal-item:hover .gal-overlay { opacity: 1; }
-    .gal-caption { color: var(--text); font-size: .88rem; font-weight: 700; line-height: 1.3; }
-
-    /* ── Lightbox ───────────────────────────────────── */
-    #lightbox {
-      position: fixed; inset: 0; background: rgba(0,0,0,.96);
-      z-index: 2000; display: none; align-items: center;
-      justify-content: center; flex-direction: column; gap: 14px;
-    }
-    #lightbox.open { display: flex; }
-    #lightbox img {
-      max-width: 90vw; max-height: 74vh; object-fit: contain;
-      border-radius: 10px; box-shadow: 0 0 80px rgba(0,0,0,.9);
-    }
-    .lb-close {
-      position: absolute; top: 18px; right: 22px;
-      background: rgba(163,230,53,.14); border: 1px solid var(--border-h);
-      color: var(--lime); width: 40px; height: 40px; border-radius: 50%;
-      font-size: 1.15rem; cursor: pointer; display: flex;
-      align-items: center; justify-content: center; transition: all .2s;
-    }
-    .lb-close:hover { background: rgba(163,230,53,.28); }
-    .lb-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(163,230,53,.1); border: 1px solid var(--border-h);
-      color: var(--lime); width: 46px; height: 46px; border-radius: 50%;
-      font-size: 1.8rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; transition: all .2s;
-    }
-    .lb-btn:hover { background: rgba(163,230,53,.24); }
-    #lbPrev { left: 18px; } #lbNext { right: 18px; }
-    #lbCaption { color: var(--text-m); font-size: .9rem; text-align: center; max-width: 560px; padding: 0 16px; }
-
-    /* ── Contact ────────────────────────────────────── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.8fr; gap: 48px; align-items: start; }
-    .contact-info { display: flex; flex-direction: column; gap: 22px; }
-    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
-    .ci-icon {
-      font-size: 1.3rem; width: 46px; height: 46px;
-      background: rgba(163,230,53,.09); border: 1px solid var(--border);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .contact-item h4 { color: var(--lime); font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 3px; }
-    .contact-item p { color: var(--text-m); font-size: .92rem; }
-    .contact-item a { color: var(--text-m); text-decoration: none; }
-    .contact-item a:hover { color: var(--lime); }
-
-    /* ── Form ───────────────────────────────────────── */
-    .contact-form { display: flex; flex-direction: column; gap: 18px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-    .form-group label { font-size: .85rem; font-weight: 700; color: var(--text-m); }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--bg-card); border: 1.5px solid var(--border);
-      border-radius: 10px; padding: 11px 14px; color: var(--text);
-      font-size: .92rem; font-family: inherit; transition: border-color .2s; outline: none;
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(240,253,244,.28); }
-    .form-group select option { background: #0c1a12; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--lime); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-status { text-align: center; font-weight: 700; font-size: .9rem; min-height: 22px; }
-    .form-status.ok  { color: var(--green); }
-    .form-status.err { color: var(--red);   }
-
-    /* ── Footer ─────────────────────────────────────── */
-    footer { background: #040a07; border-top: 1px solid var(--border); padding: 56px 0 22px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
-    .footer-brand-name { font-size: 1.7rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; }
-    .footer-brand-name strong { color: var(--lime); }
-    .footer-brand p { color: var(--text-m); font-size: .88rem; line-height: 1.7; }
-    .footer-col h4 {
-      color: var(--lime); font-size: .78rem; text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: 14px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .footer-col a { color: var(--text-m); text-decoration: none; font-size: .88rem; transition: color .2s; }
-    .footer-col a:hover { color: var(--lime); }
-    .social-links { display: flex; flex-direction: column; gap: 8px; }
-    .social-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--text-m); text-decoration: none; font-size: .88rem;
-      padding: 7px 12px; border-radius: 8px; border: 1px solid var(--border); transition: all .2s;
-    }
-    .social-btn:hover { color: var(--lime); border-color: var(--border-h); background: rgba(163,230,53,.05); }
-    .footer-bottom {
-      border-top: 1px solid var(--border); padding-top: 22px;
-      text-align: center; font-size: .82rem; color: var(--text-s);
-    }
-    .footer-bottom a { color: var(--lime); text-decoration: none; }
-
-    /* ── Utilities ──────────────────────────────────── */
-    .loading  { text-align: center; padding: 48px; color: var(--text-m); font-size: .92rem; }
-    .no-data  { text-align: center; padding: 40px; color: var(--text-s); font-size: .92rem; }
-    .err-msg  { text-align: center; padding: 40px; color: var(--red);    font-size: .92rem; }
-    .demo-banner {
-      text-align: center; padding: 10px 16px; font-size: .8rem;
-      background: rgba(234,179,8,.1); border: 1px solid rgba(234,179,8,.25);
-      border-radius: 8px; color: var(--yellow); margin-bottom: 20px;
-    }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── Calendly ───────────────────────────────────────── */
-    .calendly-wrap {
-      border: 1px solid var(--border); border-radius: var(--r);
-      overflow: hidden; background: var(--bg-card);
-    }
-
-    /* ── Animations ─────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Mobile ─────────────────────────────────────── */
-    @media (max-width: 820px) {
-      .contact-grid { grid-template-columns: 1fr; }
-      .footer-grid  { grid-template-columns: 1fr; gap: 30px; }
-      .form-row     { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: absolute; top: var(--nav); left: 0; right: 0;
-        background: rgba(6,16,10,.97); backdrop-filter: blur(20px);
-        flex-direction: column; padding: 16px 20px; gap: 3px;
-        border-bottom: 1px solid var(--border); display: none;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 11px 14px; width: 100%; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); position: relative; }
-      .hero-content { padding-bottom: 32px; }
-      .hero { min-height: auto; }
-      .matches-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-      #lbPrev { left: 8px; } #lbNext { right: 8px; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { letter-spacing: -2px; }
-      .hero-btns { flex-direction: column; align-items: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════════
-     NAVIGATION
-═════════════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <div class="nav-wrap">
-    <a href="#inicio" class="nav-brand">⚽ Kiin<strong>Uts</strong></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#partidos">Partidos</a></li>
-      <li><a href="#posiciones">Posiciones</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#agenda">Agenda</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="admin.html" class="nav-admin">⚙ Admin</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- Nav (injected by shared.js) -->
+<div id="nav-ph"></div>
+<script src="js/shared.js"></script>
 
-<!-- ════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════
      HERO
-═════════════════════════════════════════════════════════ -->
-<section id="inicio" class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">⚡ Organización deportiva desde 2011</div>
-    <h1>Kiin<span class="accent">Uts</span></h1>
-    <p class="hero-sub">La comunidad deportiva y recreativa más activa de México.</p>
-    <div class="hero-btns">
-      <a href="#partidos" class="btn btn-primary">🏆 Ver Partidos</a>
-      <a href="#contacto" class="btn btn-outline">📩 Contáctanos</a>
-    </div>
-  </div>
-  <div class="stats-bar">
-    <div class="stat"><span class="stat-num" data-target="13">0</span><span class="stat-label">Años de experiencia</span></div>
-    <div class="stat"><span class="stat-num" data-target="500">0</span><span class="stat-label">Jugadores activos</span></div>
-    <div class="stat"><span class="stat-num" data-target="20">0</span><span class="stat-label">Ligas organizadas</span></div>
-    <div class="stat"><span class="stat-num" data-target="50">0</span><span class="stat-label">Equipos participantes</span></div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════
-     PARTIDOS & RESULTADOS
-═════════════════════════════════════════════════════════ -->
-<section id="partidos" class="section">
+══════════════════════════════════════════════ -->
+<section class="hero-index">
   <div class="container">
-    <div class="section-header fade-in">
-      <h2>Partidos &amp; <span class="accent">Resultados</span></h2>
-      <p>Resultados actualizados desde Google Sheets en tiempo real</p>
-    </div>
-    <div id="matchesBanner"></div>
-    <div class="league-tabs" id="matchTabs"></div>
-    <div class="matches-grid" id="matchesGrid">
-      <div class="loading">⏳ Cargando partidos…</div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════
-     TABLA DE POSICIONES
-═════════════════════════════════════════════════════════ -->
-<section id="posiciones" class="section section-alt">
-  <div class="container">
-    <div class="section-header fade-in">
-      <h2>Tabla de <span class="accent">Posiciones</span></h2>
-      <p>Clasificación actualizada por liga y torneo</p>
-    </div>
-    <div id="standingsBanner"></div>
-    <div class="league-tabs" id="standingsTabs"></div>
-    <div class="table-wrap">
-      <table class="standings-table">
-        <thead>
-          <tr>
-            <th>#</th><th>Equipo</th><th>PJ</th>
-            <th>G</th><th>E</th><th>P</th>
-            <th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
-          </tr>
-        </thead>
-        <tbody id="standingsBody">
-          <tr><td colspan="10" class="loading">⏳ Cargando posiciones…</td></tr>
-        </tbody>
-      </table>
+    <div class="hero-content">
+      <div class="hero-tag">⚡ Desde 2011 en México</div>
+      <h1>Organización de<br><span class="hl">Eventos Deportivos</span><br>y Recreativos</h1>
+      <p class="hero-sub">Aumenta la productividad de tus colaboradores o alumnos con nuestros programas de deporte, recreación y bienestar integral.</p>
+      <div class="hero-btns">
+        <a href="contacto.html" class="btn btn-primary">Contáctanos hoy</a>
+        <a href="#servicios" class="btn btn-outline-white">Ver servicios</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     GALERÍA
-═════════════════════════════════════════════════════════ -->
-<section id="galeria" class="section">
-  <div class="container">
-    <div class="section-header fade-in">
-      <h2>Galería <span class="accent">Fotográfica</span></h2>
-      <p>Momentos especiales de nuestras ligas y torneos</p>
-    </div>
-    <div class="gallery-filter">
-      <button class="filter-btn active" data-filter="all">📸 Todos</button>
-      <button class="filter-btn" data-filter="partidos">⚽ Partidos</button>
-      <button class="filter-btn" data-filter="torneos">🏆 Torneos</button>
-      <button class="filter-btn" data-filter="eventos">🎉 Eventos</button>
-    </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="loading">⏳ Cargando galería…</div>
-    </div>
+<!-- ══════════════════════════════════════════════
+     STATS
+══════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num" data-count="13" data-suffix="+">13+</span>
+    <span class="stat-label">Años de experiencia</span>
   </div>
-</section>
-
-<!-- Lightbox -->
-<div id="lightbox">
-  <button class="lb-close" id="lbClose">✕</button>
-  <button class="lb-btn" id="lbPrev">‹</button>
-  <img src="" alt="" id="lbImg">
-  <p id="lbCaption"></p>
-  <button class="lb-btn" id="lbNext">›</button>
+  <div class="stat-item">
+    <span class="stat-num" data-count="40" data-suffix="+">40+</span>
+    <span class="stat-label">Clientes satisfechos</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="500" data-suffix="+">500+</span>
+    <span class="stat-label">Alumnos y colaboradores</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="5" data-suffix="">5</span>
+    <span class="stat-label">Servicios especializados</span>
+  </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     AGENDA UNA CITA
-═════════════════════════════════════════════════════════ -->
-<section id="agenda" class="section section-alt">
+<!-- ══════════════════════════════════════════════
+     SERVICIOS
+══════════════════════════════════════════════ -->
+<section id="servicios" class="section section-alt">
   <div class="container">
     <div class="section-header fade-in">
-      <h2>Agenda una <span class="accent">cita</span> con nosotros</h2>
-      <p>Selecciona el día y hora que mejor te convenga</p>
+      <div class="tag">Lo que hacemos</div>
+      <h2>Nuestros <span class="accent-green">Servicios</span></h2>
+      <p>Soluciones deportivas y recreativas para empresas e instituciones educativas en México.</p>
     </div>
-    <div class="calendly-wrap fade-in">
-      <div class="calendly-inline-widget"
-           data-url="https://calendly.com/pikipau835/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=a3e635&text_color=f0fdf4&background_color=0c1a12"
-           style="min-width:320px;height:700px;"></div>
+    <div class="services-grid">
+      <a href="deportes.html" class="service-card fade-in">
+        <span class="service-icon">⚽</span>
+        <h3>Deportes</h3>
+        <p>Ligas deportivas escolares y empresariales. Promovemos el hábito deportivo y el trabajo en equipo.</p>
+        <span class="service-link">Conocer más →</span>
+      </a>
+      <a href="recreacion.html" class="service-card fade-in">
+        <span class="service-icon">🎉</span>
+        <h3>Recreación</h3>
+        <p>Mini Olimpiadas, Días de la Familia, Cursos de Verano, Team Building y Campamentos escolares.</p>
+        <span class="service-link">Conocer más →</span>
+      </a>
+      <a href="ponte-en-forma.html" class="service-card fade-in">
+        <span class="service-icon">🏋️</span>
+        <h3>Ponte en Forma</h3>
+        <p>Programa de monitoreo de acondicionamiento físico. Identifica talentos y combate la obesidad.</p>
+        <span class="service-link">Conocer más →</span>
+      </a>
+      <a href="capacitacion.html" class="service-card fade-in">
+        <span class="service-icon">📚</span>
+        <h3>Capacitación</h3>
+        <p>Profesionalización de docentes y entrenadores con jornadas presenciales, online y mixtas.</p>
+        <span class="service-link">Conocer más →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     CONTACTO
-═════════════════════════════════════════════════════════ -->
-<section id="contacto" class="section">
+<!-- ══════════════════════════════════════════════
+     LIGAS DEPORTIVAS
+══════════════════════════════════════════════ -->
+<section class="section">
   <div class="container">
-    <div class="section-header fade-in">
-      <h2>Contáct<span class="accent">anos</span></h2>
-      <p>¿Quieres unirte a una liga o tienes preguntas? Escríbenos.</p>
-    </div>
-    <div class="contact-grid">
-      <!-- Info -->
-      <div class="contact-info fade-in">
-        <div class="contact-item">
-          <div class="ci-icon">📍</div>
-          <div><h4>Ubicación</h4><p>México</p></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">📧</div>
-          <div><h4>Email</h4><p><a href="mailto:info@kiinuts.com">info@kiinuts.com</a></p></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">💬</div>
-          <div><h4>WhatsApp</h4><p><a href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">📅</div>
-          <div><h4>Fundada</h4><p>2011 · 13 años organizando deporte</p></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">🕑</div>
-          <div><h4>Horario de atención</h4><p>Lun–Vie 9:00–18:00</p></div>
-        </div>
+    <div class="ligas-cta fade-in">
+      <div class="cta-text">
+        <h2>🏆 Ligas Deportivas</h2>
+        <p>Consulta calendarios, resultados, posiciones y estadísticas de todas nuestras ligas activas en nuestra consola deportiva en línea.</p>
       </div>
-      <!-- Form -->
-      <form class="contact-form fade-in" id="contactForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">Nombre *</label>
-            <input type="text" id="fname" name="name" required placeholder="Tu nombre">
-          </div>
-          <div class="form-group">
-            <label for="femail">Correo *</label>
-            <input type="email" id="femail" name="email" required placeholder="tu@email.com">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fphone">Teléfono</label>
-            <input type="tel" id="fphone" name="phone" placeholder="555-123-4567">
-          </div>
-          <div class="form-group">
-            <label for="fsubject">Asunto *</label>
-            <select id="fsubject" name="subject" required>
-              <option value="">Selecciona…</option>
-              <option value="inscripcion">Inscripción a liga</option>
-              <option value="informacion">Información general</option>
-              <option value="evento">Organizar evento</option>
-              <option value="arbitraje">Arbitraje</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="fmsg">Mensaje *</label>
-          <textarea id="fmsg" name="message" required rows="4" placeholder="Escribe tu mensaje…"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">📩 Enviar Mensaje</button>
-        <div class="form-status" id="formStatus"></div>
-      </form>
+      <a href="https://consola.zione.com.mx" target="_blank" rel="noopener" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0">
+        Ver ligas en línea →
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     FOOTER
-═════════════════════════════════════════════════════════ -->
-<footer>
+<!-- ══════════════════════════════════════════════
+     NOSOTROS PREVIEW
+══════════════════════════════════════════════ -->
+<section class="section section-alt">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-brand-name">Kiin<strong>Uts</strong></div>
-        <p>Organización deportiva y recreativa de México.<br>Promoviendo el deporte y la comunidad desde 2011.</p>
+    <div class="split">
+      <div class="split-img fade-in-l">
+        <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=800&q=80&fit=crop" alt="Niños practicando deporte" loading="lazy">
       </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#partidos">Partidos</a></li>
-          <li><a href="#posiciones">Posiciones</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li><a href="#agenda">Agenda una cita</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Redes Sociales</h4>
-        <div class="social-links">
-          <a href="#" class="social-btn">📘 Facebook</a>
-          <a href="#" class="social-btn">📸 Instagram</a>
-          <a href="#" class="social-btn">💬 WhatsApp</a>
+      <div class="split-text fade-in-r">
+        <div class="tag">¿Quiénes somos?</div>
+        <h2>Kiin Uts significa <span class="accent-green">"Clima Bueno"</span> en maya</h2>
+        <p>Fundada en 2011, somos una organización deportiva y recreativa mexicana con más de 13 años creando experiencias positivas e impactantes.</p>
+        <p>Nuestra misión es crear experiencias agradables llenas de optimismo y felicidad, por medio del deporte y la recreación, formando personas íntegras que impacten positivamente en nuestra sociedad.</p>
+        <div class="gap-flex" style="margin-top:24px">
+          <a href="nosotros.html" class="btn btn-primary">Conocer más</a>
+          <a href="contacto.html" class="btn btn-outline-green">Contáctanos</a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 Kiin Uts · Todos los derechos reservados ·
-        <a href="admin.html">Panel Admin</a> ·
-        <a href="mailto:info@kiinuts.com">info@kiinuts.com</a>
-      </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     RECREACIÓN PREVIEW
+══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="tag">Recreación</div>
+      <h2>Eventos que <span class="accent-green">transforman</span> comunidades</h2>
+      <p>Creamos momentos únicos para empresas e instituciones educativas en toda México.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🏅</div>
+        <div class="feature-text">
+          <h4>Mini Olimpiadas</h4>
+          <p>Competencias deportivas internas que fomentan la sana competencia y el trabajo en equipo.</p>
+        </div>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🚌</div>
+        <div class="feature-text">
+          <h4>Excursiones</h4>
+          <p>Proyecto "Vámonos de Pinta": parques, museos, teatros y días de campo memorables.</p>
+        </div>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">☀️</div>
+        <div class="feature-text">
+          <h4>Cursos de Verano</h4>
+          <p>Programas recreativos y deportivos de verano en modalidades fija, excursiones y campamento.</p>
+        </div>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-text">
+          <h4>Team Building</h4>
+          <p>Rallys y actividades diseñadas para fortalecer la cohesión y comunicación de tu equipo.</p>
+        </div>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🎊</div>
+        <div class="feature-text">
+          <h4>Festejos Empresariales</h4>
+          <p>Organización de fiestas de fin de año, días de la familia y eventos corporativos especiales.</p>
+        </div>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">⛺</div>
+        <div class="feature-text">
+          <h4>Campamentos Escolares</h4>
+          <p>Experiencias de convivencia al aire libre que desarrollan valores y habilidades en los jóvenes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:36px">
+      <a href="recreacion.html" class="btn btn-primary">Ver todos los servicios recreativos</a>
     </div>
   </div>
-</footer>
+</section>
 
-<!-- Calendly widget script -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- ══════════════════════════════════════════════
+     CLIENTES
+══════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="tag">Clientes</div>
+      <h2>Instituciones que <span class="accent-green">confían</span> en nosotros</h2>
+      <p>Más de 40 colegios, empresas y organizaciones en México respaldan nuestra experiencia.</p>
+    </div>
 
-<!-- ════════════════════════════════════════════════════════
-     JAVASCRIPT
-═════════════════════════════════════════════════════════ -->
-<script>
-/* ──────────────────────────────────────────────────────────
-   CONFIG — edita estas variables o configúralas desde Admin
-────────────────────────────────────────────────────────── */
-(function () {
-  'use strict';
+    <p class="text-center mb-16" style="font-weight:700;color:var(--text-s);font-size:.82rem;text-transform:uppercase;letter-spacing:.8px">Colegios e Instituciones Educativas</p>
+    <div class="clients-grid fade-in" style="margin-bottom:32px">
+      <span class="client-pill">Tec de Monterrey</span>
+      <span class="client-pill">The American School</span>
+      <span class="client-pill">Colegio Alemán</span>
+      <span class="client-pill">Colegio Williams</span>
+      <span class="client-pill">Colegio Sierra Nevada</span>
+      <span class="client-pill">Colegio Monteverde</span>
+      <span class="client-pill">Colegio Miraflores</span>
+      <span class="client-pill">Highlands</span>
+      <span class="client-pill">Eton School</span>
+      <span class="client-pill">Del Bosque</span>
+      <span class="client-pill">Irish Institute</span>
+      <span class="client-pill">Oxford School</span>
+      <span class="client-pill">Queen Mary</span>
+      <span class="client-pill">Peterson Schools</span>
+      <span class="client-pill">Pinecrest</span>
+      <span class="client-pill">Lomas Hill</span>
+      <span class="client-pill">Moderno Tepeyac</span>
+      <span class="client-pill">Prepa Anáhuac</span>
+      <span class="client-pill">Sisukas</span>
+      <span class="client-pill">Westhill</span>
+      <span class="client-pill">The Wingate</span>
+      <span class="client-pill">Academia Maddox</span>
+      <span class="client-pill">Colegio Atid</span>
+      <span class="client-pill">Colegio Ciudad de México</span>
+      <span class="client-pill">Colegio Cristóbal Colón</span>
+      <span class="client-pill">Colegio Eugenio de Mazenod</span>
+      <span class="client-pill">La Salle Mixcoac</span>
+      <span class="client-pill">Colegio Manuel Acosta</span>
+      <span class="client-pill">Colegio Tomás Moro</span>
+    </div>
 
-  // Carga config guardada desde el panel admin (localStorage)
-  const saved = JSON.parse(localStorage.getItem('kiinuts_config') || '{}');
+    <p class="text-center mb-16" style="font-weight:700;color:var(--text-s);font-size:.82rem;text-transform:uppercase;letter-spacing:.8px">Empresas y Organizaciones</p>
+    <div class="clients-grid fade-in">
+      <span class="client-pill empresa">OXXO</span>
+      <span class="client-pill empresa">Arthrex</span>
+      <span class="client-pill empresa">Bluetab</span>
+      <span class="client-pill empresa">Tokio Marine</span>
+      <span class="client-pill empresa">Bioparque Estrella</span>
+      <span class="client-pill empresa">Granjas Las Américas</span>
+      <span class="client-pill empresa">Secretaría de Gobernación</span>
+      <span class="client-pill empresa">Centro Deportivo Israelita</span>
+    </div>
+  </div>
+</section>
 
-  const CFG = {
-    // Reemplaza con el ID de tu Google Sheet (URL: /spreadsheets/d/AQUI/edit)
-    SHEET_ID:        saved.sheetId        || 'TU_GOOGLE_SHEET_ID',
-    SHEET_PARTIDOS:  saved.sheetPartidos  || 'Partidos',
-    SHEET_POSICIONES:saved.sheetPos       || 'Posiciones',
-    SHEET_GALERIA:   saved.sheetGaleria   || 'Galeria',
-    // Reemplaza con tu ID de Formspree (formspree.io)
-    FORMSPREE_ID:    saved.formspreeId    || 'TU_FORMSPREE_ID',
-    // WhatsApp — pon tu número con código de país sin + ni espacios
-    WHATSAPP:        saved.whatsapp       || '521XXXXXXXXXX',
-  };
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container text-center fade-in">
+    <div class="tag" style="background:rgba(123,193,68,.2);border-color:rgba(123,193,68,.4);color:var(--green-l)">¿Listo para empezar?</div>
+    <h2 style="color:#fff;margin-bottom:16px;margin-top:8px">Construyamos algo <span style="color:var(--green-l)">extraordinario</span> juntos</h2>
+    <p style="color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 36px">Cuéntanos tu proyecto y te diseñamos un programa a la medida de tu institución o empresa.</p>
+    <div class="gap-flex" style="justify-content:center">
+      <a href="contacto.html" class="btn btn-primary">Agendar una reunión</a>
+      <a href="tel:5514733567" class="btn btn-outline-white">📞 55 1473 3567</a>
+    </div>
+  </div>
+</section>
 
-  // Si hay WhatsApp configurado, actualiza el enlace
-  document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
-    a.href = `https://wa.me/${CFG.WHATSAPP}`;
-  });
+<!-- Footer (injected by shared.js) -->
+<div id="footer-ph"></div>
 
-  /* ──────────────────────────────────────────────────────
-     DATOS DE DEMO  (se usan cuando SHEET_ID no está listo)
-  ────────────────────────────────────────────────────── */
-  const DEMO = {
-    partidos: [
-      { Liga:'Liga Varonil A', Fecha:'2024-03-15', Local:'Aztecas FC',    Visitante:'Pumas Blancos', Goles_Local:'3', Goles_Visitante:'1', Estado:'Finalizado' },
-      { Liga:'Liga Varonil A', Fecha:'2024-03-15', Local:'Tigres Dorados',Visitante:'Cruz Verde',    Goles_Local:'2', Goles_Visitante:'2', Estado:'Finalizado' },
-      { Liga:'Liga Varonil A', Fecha:'2024-03-22', Local:'América Verde', Visitante:'Rayados Sur',   Goles_Local:'',  Goles_Visitante:'',  Estado:'Programado' },
-      { Liga:'Liga Varonil A', Fecha:'2024-03-22', Local:'Santos Norte',  Visitante:'Aztecas FC',    Goles_Local:'',  Goles_Visitante:'',  Estado:'Programado' },
-      { Liga:'Liga Varonil B', Fecha:'2024-03-14', Local:'Lobos FC',      Visitante:'Halcones',      Goles_Local:'1', Goles_Visitante:'0', Estado:'Finalizado' },
-      { Liga:'Liga Varonil B', Fecha:'2024-03-14', Local:'Jaguares',      Visitante:'Águilas',       Goles_Local:'4', Goles_Visitante:'2', Estado:'Finalizado' },
-      { Liga:'Liga Varonil B', Fecha:'2024-03-21', Local:'Leones',        Visitante:'Lobos FC',      Goles_Local:'',  Goles_Visitante:'',  Estado:'Programado' },
-      { Liga:'Liga Femenil',   Fecha:'2024-03-16', Local:'Leonas FC',     Visitante:'Guerreras',     Goles_Local:'2', Goles_Visitante:'1', Estado:'Finalizado' },
-      { Liga:'Liga Femenil',   Fecha:'2024-03-16', Local:'Panteras',      Visitante:'Tiburones',     Goles_Local:'3', Goles_Visitante:'0', Estado:'Finalizado' },
-      { Liga:'Liga Femenil',   Fecha:'2024-03-23', Local:'Leonas FC',     Visitante:'Panteras',      Goles_Local:'',  Goles_Visitante:'',  Estado:'Programado' },
-    ],
-    posiciones: [
-      { Liga:'Liga Varonil A', Equipo:'Aztecas FC',     PJ:'8', G:'6', E:'1', P:'1', GF:'18', GC:'7',  Pts:'19' },
-      { Liga:'Liga Varonil A', Equipo:'Tigres Dorados', PJ:'8', G:'5', E:'2', P:'1', GF:'15', GC:'9',  Pts:'17' },
-      { Liga:'Liga Varonil A', Equipo:'Cruz Verde',     PJ:'8', G:'4', E:'2', P:'2', GF:'12', GC:'10', Pts:'14' },
-      { Liga:'Liga Varonil A', Equipo:'Pumas Blancos',  PJ:'8', G:'3', E:'1', P:'4', GF:'10', GC:'13', Pts:'10' },
-      { Liga:'Liga Varonil A', Equipo:'América Verde',  PJ:'8', G:'2', E:'2', P:'4', GF:'9',  GC:'14', Pts:'8'  },
-      { Liga:'Liga Varonil A', Equipo:'Rayados Sur',    PJ:'8', G:'2', E:'1', P:'5', GF:'8',  GC:'14', Pts:'7'  },
-      { Liga:'Liga Varonil A', Equipo:'Santos Norte',   PJ:'8', G:'1', E:'1', P:'6', GF:'6',  GC:'11', Pts:'4'  },
-      { Liga:'Liga Varonil B', Equipo:'Jaguares',       PJ:'7', G:'5', E:'1', P:'1', GF:'20', GC:'8',  Pts:'16' },
-      { Liga:'Liga Varonil B', Equipo:'Lobos FC',       PJ:'7', G:'5', E:'0', P:'2', GF:'14', GC:'7',  Pts:'15' },
-      { Liga:'Liga Varonil B', Equipo:'Águilas',        PJ:'7', G:'3', E:'2', P:'2', GF:'11', GC:'10', Pts:'11' },
-      { Liga:'Liga Varonil B', Equipo:'Halcones',       PJ:'7', G:'2', E:'1', P:'4', GF:'8',  GC:'13', Pts:'7'  },
-      { Liga:'Liga Varonil B', Equipo:'Leones',         PJ:'7', G:'1', E:'2', P:'4', GF:'6',  GC:'14', Pts:'5'  },
-      { Liga:'Liga Femenil',   Equipo:'Panteras',       PJ:'6', G:'5', E:'0', P:'1', GF:'16', GC:'5',  Pts:'15' },
-      { Liga:'Liga Femenil',   Equipo:'Leonas FC',      PJ:'6', G:'4', E:'1', P:'1', GF:'13', GC:'6',  Pts:'13' },
-      { Liga:'Liga Femenil',   Equipo:'Guerreras',      PJ:'6', G:'3', E:'0', P:'3', GF:'9',  GC:'10', Pts:'9'  },
-      { Liga:'Liga Femenil',   Equipo:'Tiburones',      PJ:'6', G:'0', E:'1', P:'5', GF:'3',  GC:'15', Pts:'1'  },
-    ],
-    galeria: [
-      { URL:'https://picsum.photos/seed/kiinuts1/600/400', Caption:'Final Liga Varonil A 2023',     Categoria:'partidos' },
-      { URL:'https://picsum.photos/seed/kiinuts2/600/400', Caption:'Torneo de Verano 2023',         Categoria:'torneos'  },
-      { URL:'https://picsum.photos/seed/kiinuts3/600/400', Caption:'Copa Kiin Uts — Gran Final',    Categoria:'torneos'  },
-      { URL:'https://picsum.photos/seed/kiinuts4/600/400', Caption:'Premiación Liga Femenil',       Categoria:'eventos'  },
-      { URL:'https://picsum.photos/seed/kiinuts5/600/400', Caption:'Semifinal varonil emocionante', Categoria:'partidos' },
-      { URL:'https://picsum.photos/seed/kiinuts6/600/400', Caption:'Día deportivo familiar',        Categoria:'eventos'  },
-      { URL:'https://picsum.photos/seed/kiinuts7/600/400', Caption:'Gol del torneo 2023',           Categoria:'partidos' },
-      { URL:'https://picsum.photos/seed/kiinuts8/600/400', Caption:'Inauguración Liga Varonil B',   Categoria:'eventos'  },
-      { URL:'https://picsum.photos/seed/kiinuts9/600/400', Caption:'Semifinal femenil 2024',        Categoria:'partidos' },
-    ]
-  };
-
-  const isDemo = CFG.SHEET_ID === 'TU_GOOGLE_SHEET_ID';
-
-  function demoBanner(text) {
-    return `<div class="demo-banner">⚠️ ${text}. <a href="admin.html" style="color:var(--yellow)">Configura tu Google Sheet en el panel admin</a>.</div>`;
-  }
-
-  /* ──────────────────────────────────────────────────────
-     GOOGLE SHEETS FETCHER
-  ────────────────────────────────────────────────────── */
-  async function fetchSheet(sheetName) {
-    const url = `https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
-    const res  = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const text = await res.text();
-    const m    = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
-    if (!m) throw new Error('Respuesta inesperada de Google Sheets');
-    const data = JSON.parse(m[1]);
-    if (data.status === 'error') throw new Error(data.errors?.[0]?.message || 'Error en Sheets');
-    return parseTable(data.table);
-  }
-
-  function parseTable(table) {
-    if (!table || !table.rows) return [];
-    const headers = table.cols.map(c => c.label || c.id);
-    return table.rows
-      .filter(r => r.c && r.c.some(cell => cell && cell.v !== null && cell.v !== ''))
-      .map(r => {
-        const obj = {};
-        headers.forEach((h, i) => {
-          const cell = r.c[i];
-          obj[h] = cell ? (cell.f ?? cell.v ?? '') : '';
-        });
-        return obj;
-      });
-  }
-
-  /* ──────────────────────────────────────────────────────
-     NAV
-  ────────────────────────────────────────────────────── */
-  const toggle   = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-
-  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  // Active link on scroll
-  const sections  = document.querySelectorAll('section[id]');
-  const anchors   = document.querySelectorAll('.nav-links a[href^="#"]');
-  const navObs    = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        anchors.forEach(a => a.classList.remove('active'));
-        const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
-  sections.forEach(s => navObs.observe(s));
-
-  /* ──────────────────────────────────────────────────────
-     STATS COUNTER
-  ────────────────────────────────────────────────────── */
-  const counters = document.querySelectorAll('.stat-num[data-target]');
-  const seen     = new Set();
-  const cntObs   = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !seen.has(e.target)) {
-        seen.add(e.target);
-        const target = +e.target.dataset.target;
-        const t0     = performance.now();
-        const dur    = 1400;
-        (function step(now) {
-          const p = Math.min((now - t0) / dur, 1);
-          const ease = 1 - Math.pow(1 - p, 3);
-          e.target.textContent = Math.floor(ease * target);
-          if (p < 1) requestAnimationFrame(step);
-          else e.target.textContent = target;
-        })(t0);
-      }
-    });
-  });
-  counters.forEach(c => cntObs.observe(c));
-
-  /* ──────────────────────────────────────────────────────
-     SCROLL FADE-IN
-  ────────────────────────────────────────────────────── */
-  const fadeObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
-
-  /* ──────────────────────────────────────────────────────
-     MATCHES
-  ────────────────────────────────────────────────────── */
-  let allMatches = [], matchLeague = 'all';
-
-  function fmtDate(s) {
-    if (!s) return '—';
-    try {
-      const d = new Date(s);
-      if (isNaN(d)) return s;
-      return d.toLocaleDateString('es-MX', { weekday:'short', day:'numeric', month:'short' });
-    } catch { return s; }
-  }
-
-  function renderMatches() {
-    const grid = document.getElementById('matchesGrid');
-    const data = matchLeague === 'all' ? allMatches : allMatches.filter(m => m.Liga === matchLeague);
-    if (!data.length) { grid.innerHTML = '<div class="no-data">No hay partidos para mostrar</div>'; return; }
-
-    grid.innerHTML = data.map(m => {
-      const done = m.Estado === 'Finalizado';
-      const live = m.Estado === 'En curso';
-      const cls  = done ? 's-done' : live ? 's-live' : 's-prog';
-      const lbl  = m.Estado || 'Programado';
-      const score = (done || live)
-        ? `<div class="match-score"><span>${m.Goles_Local ?? '?'}</span><span class="score-sep">–</span><span>${m.Goles_Visitante ?? '?'}</span></div>`
-        : `<div class="match-score" style="color:var(--text-s);font-size:1rem;font-weight:600">vs</div>`;
-      return `
-        <div class="match-card">
-          <div class="match-meta">
-            <span class="match-date">📅 ${fmtDate(m.Fecha)}</span>
-            <span class="match-status ${cls}">${lbl}</span>
-          </div>
-          <div class="match-teams">
-            <div class="team-name team-home">${m.Local || '?'}</div>
-            ${score}
-            <div class="team-name team-away">${m.Visitante || '?'}</div>
-          </div>
-          <div class="match-league">🏆 ${m.Liga || ''}</div>
-        </div>`;
-    }).join('');
-  }
-
-  async function initMatches() {
-    const banner = document.getElementById('matchesBanner');
-    try {
-      if (isDemo) throw new Error('demo');
-      allMatches = await fetchSheet(CFG.SHEET_PARTIDOS);
-      if (!allMatches.length) throw new Error('empty');
-    } catch {
-      allMatches = DEMO.partidos;
-      banner.innerHTML = demoBanner('Mostrando datos de ejemplo');
-    }
-
-    const tabs    = document.getElementById('matchTabs');
-    const leagues = ['all', ...new Set(allMatches.map(m => m.Liga))];
-    tabs.innerHTML = leagues.map(l =>
-      `<button class="tab-btn${l==='all'?' active':''}" data-league="${l}">${l==='all'?'🏆 Todas las ligas':l}</button>`
-    ).join('');
-    tabs.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        matchLeague = btn.dataset.league;
-        renderMatches();
-      });
-    });
-    renderMatches();
-  }
-
-  /* ──────────────────────────────────────────────────────
-     STANDINGS
-  ────────────────────────────────────────────────────── */
-  let allStandings = [], standingLeague = '';
-
-  function renderStandings() {
-    const tbody = document.getElementById('standingsBody');
-    const data  = allStandings
-      .filter(s => s.Liga === standingLeague)
-      .sort((a, b) => parseInt(b.Pts) - parseInt(a.Pts));
-
-    if (!data.length) { tbody.innerHTML = '<tr><td colspan="10" class="no-data">Sin datos</td></tr>'; return; }
-
-    tbody.innerHTML = data.map((s, i) => {
-      const dg = parseInt(s.GF || 0) - parseInt(s.GC || 0);
-      return `
-        <tr class="pos-${i + 1}">
-          <td>${i + 1}</td>
-          <td>${s.Equipo || '—'}</td>
-          <td>${s.PJ  || 0}</td><td>${s.G  || 0}</td>
-          <td>${s.E   || 0}</td><td>${s.P  || 0}</td>
-          <td>${s.GF  || 0}</td><td>${s.GC || 0}</td>
-          <td>${dg >= 0 ? '+' + dg : dg}</td>
-          <td class="pts-cell">${s.Pts || 0}</td>
-        </tr>`;
-    }).join('');
-  }
-
-  async function initStandings() {
-    const banner = document.getElementById('standingsBanner');
-    try {
-      if (isDemo) throw new Error('demo');
-      allStandings = await fetchSheet(CFG.SHEET_POSICIONES);
-      if (!allStandings.length) throw new Error('empty');
-    } catch {
-      allStandings = DEMO.posiciones;
-      banner.innerHTML = demoBanner('Mostrando datos de ejemplo');
-    }
-
-    const tabs    = document.getElementById('standingsTabs');
-    const leagues = [...new Set(allStandings.map(s => s.Liga))];
-    standingLeague = leagues[0] || '';
-    tabs.innerHTML = leagues.map((l, i) =>
-      `<button class="tab-btn${i===0?' active':''}" data-league="${l}">${l}</button>`
-    ).join('');
-    tabs.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        standingLeague = btn.dataset.league;
-        renderStandings();
-      });
-    });
-    renderStandings();
-  }
-
-  /* ──────────────────────────────────────────────────────
-     GALLERY & LIGHTBOX
-  ────────────────────────────────────────────────────── */
-  let galleryItems = [], lbIndex = 0, galFilter = 'all';
-
-  function renderGallery() {
-    const grid     = document.getElementById('galleryGrid');
-    const filtered = galFilter === 'all'
-      ? galleryItems
-      : galleryItems.filter(it => (it.Categoria || '').toLowerCase() === galFilter);
-
-    if (!filtered.length) {
-      grid.innerHTML = '<div class="no-data" style="grid-column:1/-1">No hay fotos en esta categoría</div>';
-      return;
-    }
-
-    grid.innerHTML = filtered.map(it => {
-      const idx = galleryItems.indexOf(it);
-      return `
-        <div class="gal-item" onclick="openLb(${idx})">
-          <img src="${it.URL}" alt="${it.Caption || ''}" loading="lazy"
-               onerror="this.src='https://picsum.photos/seed/${idx}/600/400'">
-          <div class="gal-overlay"><span class="gal-caption">${it.Caption || ''}</span></div>
-        </div>`;
-    }).join('');
-  }
-
-  window.openLb = function (idx) {
-    lbIndex = idx;
-    const it = galleryItems[idx];
-    document.getElementById('lbImg').src        = it.URL;
-    document.getElementById('lbImg').alt        = it.Caption || '';
-    document.getElementById('lbCaption').textContent = it.Caption || '';
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  function closeLb() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function navLb(dir) {
-    lbIndex = (lbIndex + dir + galleryItems.length) % galleryItems.length;
-    window.openLb(lbIndex);
-  }
-
-  document.getElementById('lbClose').addEventListener('click', closeLb);
-  document.getElementById('lbPrev').addEventListener('click', () => navLb(-1));
-  document.getElementById('lbNext').addEventListener('click', () => navLb(+1));
-  document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLb(); });
-  document.addEventListener('keydown', e => {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape')     closeLb();
-    if (e.key === 'ArrowLeft')  navLb(-1);
-    if (e.key === 'ArrowRight') navLb(+1);
-  });
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      galFilter = btn.dataset.filter;
-      renderGallery();
-    });
-  });
-
-  async function initGallery() {
-    try {
-      if (isDemo) throw new Error('demo');
-      galleryItems = await fetchSheet(CFG.SHEET_GALERIA);
-      if (!galleryItems.length) throw new Error('empty');
-    } catch {
-      galleryItems = DEMO.galeria;
-    }
-    renderGallery();
-  }
-
-  /* ──────────────────────────────────────────────────────
-     CONTACT FORM
-  ────────────────────────────────────────────────────── */
-  const form   = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn  = document.getElementById('submitBtn');
-    const orig = btn.textContent;
-    btn.textContent = '⏳ Enviando…'; btn.disabled = true;
-    status.className = 'form-status'; status.textContent = '';
-
-    const fd = new FormData(form);
-
-    // Fallback mailto si no hay Formspree
-    if (CFG.FORMSPREE_ID === 'TU_FORMSPREE_ID') {
-      const sub  = encodeURIComponent('Contacto Kiin Uts: ' + (fd.get('subject') || ''));
-      const body = encodeURIComponent(
-        `Nombre: ${fd.get('name')}\nEmail: ${fd.get('email')}\nTeléfono: ${fd.get('phone') || '—'}\n\n${fd.get('message')}`
-      );
-      window.location.href = `mailto:info@kiinuts.com?subject=${sub}&body=${body}`;
-      btn.textContent = orig; btn.disabled = false;
-      return;
-    }
-
-    try {
-      const res = await fetch(`https://formspree.io/f/${CFG.FORMSPREE_ID}`, {
-        method:  'POST',
-        body:    fd,
-        headers: { Accept: 'application/json' }
-      });
-      if (res.ok) {
-        status.className = 'form-status ok';
-        status.textContent = '✅ ¡Mensaje enviado! Te contactaremos pronto.';
-        form.reset();
-      } else {
-        throw new Error();
-      }
-    } catch {
-      status.className = 'form-status err';
-      status.textContent = '❌ Error al enviar. Escríbenos directamente a info@kiinuts.com';
-    } finally {
-      btn.textContent = orig; btn.disabled = false;
-    }
-  });
-
-  /* ──────────────────────────────────────────────────────
-     INIT
-  ────────────────────────────────────────────────────── */
-  initMatches();
-  initStandings();
-  initGallery();
-})();
-</script>
 </body>
 </html>
