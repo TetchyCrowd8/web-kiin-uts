@@ -368,6 +368,12 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── Calendly ───────────────────────────────────────── */
+    .calendly-wrap {
+      border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; background: var(--bg-card);
+    }
+
     /* ── Animations ─────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
@@ -419,6 +425,7 @@
       <li><a href="#partidos">Partidos</a></li>
       <li><a href="#posiciones">Posiciones</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#agenda">Agenda</a></li>
       <li><a href="#contacto">Contacto</a></li>
       <li><a href="admin.html" class="nav-admin">⚙ Admin</a></li>
     </ul>
@@ -523,9 +530,26 @@
 </div>
 
 <!-- ════════════════════════════════════════════════════════
+     AGENDA UNA CITA
+═════════════════════════════════════════════════════════ -->
+<section id="agenda" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Agenda una <span class="accent">cita</span> con nosotros</h2>
+      <p>Selecciona el día y hora que mejor te convenga</p>
+    </div>
+    <div class="calendly-wrap fade-in">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/pikipau835/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=a3e635&text_color=f0fdf4&background_color=0c1a12"
+           style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
      CONTACTO
 ═════════════════════════════════════════════════════════ -->
-<section id="contacto" class="section section-alt">
+<section id="contacto" class="section">
   <div class="container">
     <div class="section-header fade-in">
       <h2>Contáct<span class="accent">anos</span></h2>
@@ -612,6 +636,7 @@
           <li><a href="#partidos">Partidos</a></li>
           <li><a href="#posiciones">Posiciones</a></li>
           <li><a href="#galeria">Galería</a></li>
+          <li><a href="#agenda">Agenda una cita</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -632,6 +657,9 @@
     </div>
   </div>
 </footer>
+
+<!-- Calendly widget script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <!-- ════════════════════════════════════════════════════════
      JAVASCRIPT
