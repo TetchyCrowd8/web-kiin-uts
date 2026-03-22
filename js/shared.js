@@ -27,11 +27,7 @@
 <nav id="navbar">
   <div class="nav-wrap">
     <a href="index.html" class="nav-brand">
-      <div class="brand-mark">KU</div>
-      <div class="brand-info">
-        <span class="brand-name">Kiin Uts</span>
-        <span class="brand-sub">Sport &amp; Recreation</span>
-      </div>
+      <img src="img/logo-kiin.jpg" alt="Kiin Uts Sport &amp; Recreation" class="brand-logo">
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
       <span></span><span></span><span></span>
@@ -48,11 +44,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <div class="brand-mark">KU</div>
-            <div>
-              <div class="brand-name">Kiin Uts</div>
-              <div class="brand-sub">Sport &amp; Recreation</div>
-            </div>
+            <img src="img/logo-kiin.jpg" alt="Kiin Uts Sport &amp; Recreation" class="brand-logo brand-logo--footer">
           </div>
           <p>Organización deportiva y recreativa de México. Creando experiencias llenas de optimismo y felicidad desde 2011.</p>
           <div class="social-links">

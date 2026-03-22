@@ -104,6 +104,8 @@ p  { color: var(--text-m); }
   line-height: 1.1; letter-spacing: -.3px;
 }
 .brand-sub { font-size: .68rem; color: var(--text-s); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.brand-logo { height: 48px; width: auto; display: block; object-fit: contain; }
+.brand-logo--footer { height: 64px; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-links a {
